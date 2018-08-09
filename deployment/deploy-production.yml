@@ -1,0 +1,17 @@
+---
+- name: Deploying to the production environment
+  hosts: production
+
+  vars_files:
+    - environments/production/vars.yml
+    - environments/production/vault.yml
+
+  vars_prompt:
+    - name: deploy_branch
+      prompt: Git branch
+      private: no
+      default: master
+
+  roles:
+    - deploy-project-web
+    - deploy

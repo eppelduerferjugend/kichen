@@ -1,0 +1,19 @@
+
+.field {
+  padding: 16px 24px;
+  border-top: 1px solid #eeeeee;
+
+  &__label {
+    display: block;
+    padding-bottom: 8px;
+    @extend %t-control-label;
+  }
+
+  &__control {
+    border: 2px solid $c-control;
+    padding: 0 8px;
+    border-radius: 4px;
+    height: 48px - 4px;
+    @extend %t-control-value;
+  }
+}

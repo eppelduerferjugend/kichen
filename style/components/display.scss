@@ -1,0 +1,134 @@
+
+.display {
+  $block: &;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: $c-black;
+
+  &__header {
+
+  }
+
+  &__orders {
+    flex-grow: 1;
+    flex-basis: 0;
+    overflow: auto;
+    padding-bottom: 100%;
+  }
+
+  &__order {
+    display: flex;
+    flex-direction: row;
+    background: $c-white;
+    margin-bottom: 2px;
+    opacity: 0.75;
+
+    &--selected {
+      opacity: 1;
+    }
+
+    &--complete {
+
+    }
+  }
+
+  &__order-header {
+    background: $c-blue;
+    color: $c-white;
+    @extend %t-text;
+    font-size: 20px;
+    width: 184px;
+    padding: 24px;
+    overflow: hidden;
+
+    #{$block}__order--complete & {
+      background: $c-white;
+      color: $c-text;
+    }
+  }
+
+  &__order-table {
+    font-size: 36px;
+  }
+
+  &__order-detail {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 24px;
+  }
+
+  &__order-items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-bottom: -16px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    margin: 0 16px 16px 0;
+    border-radius: 4px;
+    @extend %t-text;
+    font-size: 18px;
+    line-height: 32px;
+    color: $c-white;
+    background: #444444;
+
+    #{$block}__order--complete & {
+      background: #cccccc;
+      color: $c-text;
+    }
+  }
+
+  &__item-quantity {
+    display: block;
+    padding: 0 10px;
+    font-weight: 500;
+  }
+
+  &__item-name {
+    display: block;
+    padding: 0 12px;
+    border-radius: 0 4px 4px 0;
+
+    #{$block}__order--complete & {
+      background: transparent !important;
+    }
+  }
+
+  &__order-comment {
+    position: relative;
+    display: table;
+    margin-top: 24px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    max-width: 50%;
+    @extend %t-text;
+    font-size: 18px;
+    background: $c-blue;
+    color: $c-white;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 0;
+      transform: translate(-8px, -50%);
+      border-width: 8px 8px 8px 0;
+      border-style: solid;
+      border-color: transparent;
+      border-right-color: $c-blue;
+    }
+  }
+}

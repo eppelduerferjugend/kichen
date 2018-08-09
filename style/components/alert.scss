@@ -1,0 +1,62 @@
+
+.alert {
+  $block: &;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: $c-white;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  &__icon {
+
+    .material-icons {
+      font-size: 48px;
+    }
+  }
+
+  &__message {
+    margin-top: 24px;
+    padding: 0 24px;
+    max-width: 320px;
+    @extend %t-text;
+    text-align: center;
+  }
+
+  &__action {
+    margin-top: 32px;
+  }
+
+  .modal & {
+    // show context when shown inside modal
+    top: 64px;
+  }
+
+  &--loading {
+
+    #{$block}__icon {
+      animation: rotating 2s linear infinite;
+      transform-origin: 50% 45.5%;
+    }
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

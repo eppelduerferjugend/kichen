@@ -1,0 +1,14 @@
+---
+
+# Project paths
+project_path: "{{ server_working_path }}/projects/{{ project_name }}"
+
+# Shared folders
+project_shares: {}
+
+# Deployment
+deploy_environment: production
+deploy_repository: null
+
+deploy_version: "{{ ansible_date_time.epoch }}"
+deploy_path: "{{ project_path }}/versions/{{ deploy_version }}"

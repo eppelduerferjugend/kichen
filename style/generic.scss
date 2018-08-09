@@ -1,0 +1,91 @@
+
+* {
+  outline: none;
+  box-sizing: border-box;
+  transition-timing-function: ease;
+
+  // flex defaults
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: auto;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  background: $c-background;
+  font-size: $default-font-size;
+  line-height: $default-line-height;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  color: $c-text;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+button,
+input,
+select,
+textarea {
+  @extend %t-text;
+}
+
+input,
+select,
+button,
+textarea {
+  margin: 0;
+  padding: 0;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+}
+
+textarea {
+  resize: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+table,
+tr,
+td,
+th {
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+a {
+  text-decoration: inherit;
+  color: inherit;
+}

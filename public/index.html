@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Spaghettisfest</title>
+
+    <!-- style -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="dist/style/kichen.css?v=1">
+
+  </head>
+  <body>
+
+    <div class="modal-app modal">
+      <div class="modal__dialog">
+
+        <header class="modal__header">
+          <h1 class="modal__title"><a href="#">Spaghettisfest</a></h1>
+          <button type="button" class="modal__btn-menu modal-app__btn-order">
+            <i class="material-icons">add</i>
+          </button>
+        </header>
+
+        <div class="modal__content">
+          <ul class="modal-app__orders orders">
+
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="modal-order modal modal--hidden">
+      <div class="modal__dialog">
+
+        <header class="modal__header">
+          <h1 class="modal__title"><a href="#">Bestellung opginn</a></h1>
+          <button type="button" class="modal__btn-menu modal__btn-close">
+            <i class="material-icons">clear</i>
+          </button>
+        </header>
+
+        <div class="modal__content">
+
+          <ul class="modal__items items"></ul>
+
+          <div class="field">
+            <label class="field__label">Service Numm</label>
+            <input class="field__control" type="text" name="waiter" spellcheck="false">
+          </div>
+
+          <div class="field">
+            <label class="field__label">Dësch</label>
+            <input class="field__control" type="text" name="table" spellcheck="false">
+          </div>
+
+          <div class="field">
+            <label class="field__label">Kommentar</label>
+            <input class="field__control" type="text" name="comment" spellcheck="false">
+          </div>
+
+          <footer class="modal__footer">
+            <button type="submit" class="modal__submit btn">Bestellung opginn</button>
+          </footer>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- script -->
+    <script src="dist/script/kichen.js?v=1"></script>
+
+  </body>
+</html>

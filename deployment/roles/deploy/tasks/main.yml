@@ -1,0 +1,65 @@
+---
+- name: Build assets
+  local_action: shell gulp build
+  args:
+    chdir: "../"
+
+- name: Create version directory
+  file:
+    path: "{{ deploy_path }}"
+    state: directory
+    group: "{{ server_group_web }}"
+    mode: "u=rwx,g=rxs,o=x"
+
+- name: Clone repository
+  git:
+    repo: "{{ deploy_repository }}"
+    dest: "{{ deploy_path }}"
+    version: "{{ deploy_branch }}"
+    umask: "026"
+    depth: 1
+    accept_hostkey: yes
+
+- name: Upload built assets
+  synchronize:
+    src: "../public/dist"
+    dest: "{{ deploy_path }}/public/"
+    recursive: yes
+    delete: yes
+
+- name: Create shares
+  file:
+    path: "{{ project_share_path }}/{{ item.key }}"
+    state: directory
+    group: "{{ server_group_web }}"
+    mode: "ug=rwx,o=x"
+  with_dict: "{{ project_shares }}"
+
+- name: Create version shares
+  file:
+    path: "{{ deploy_path }}/{{ item.value }}"
+    state: directory
+    group: "{{ server_group_web }}"
+    mode: "ug=rwx,o=x"
+  with_dict: "{{ project_shares }}"
+
+- name: Configure project stack
+  template:
+    src: docker-compose.yml.j2
+    dest: "{{ deploy_path }}/docker-compose.yml"
+    mode: "u=rw,go=r"
+
+- name: Run Docker containers
+  docker_service:
+    project_name: "{{ project_name | replace('.', '_') }}"
+    project_src: "{{ deploy_path }}"
+    state: present
+    build: yes
+  become: yes
+  register: _docker
+
+- name: Symlink to current version
+  file:
+    path: "{{ project_path }}/versions/current"
+    src: "{{ deploy_path }}"
+    state: link

@@ -1,0 +1,57 @@
+
+.item {
+  $block: &;
+  padding: 24px;
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: -1px;
+  width: 100%;
+
+  @include breakpoint(s) {
+    width: 50%;
+    border-right: 1px solid #eeeeee;
+
+    &:nth-child(2n) {
+      border-right-color: transparent;
+    }
+  }
+
+  @include breakpoint(m, l) {
+    width: 33.333%;
+    border-right: 1px solid #eeeeee;
+
+    &:nth-child(3n) {
+      border-right-color: transparent;
+    }
+  }
+
+  &__label {
+    @extend %t-control-label;
+  }
+
+  &__label-color {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 0 1px 8px;
+    border-radius: 5px;
+    background-color: #666666;
+  }
+
+  &__variations {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 0 -12px;
+  }
+
+  &__variation {
+    display: block;
+    padding: 16px 12px 0;
+    width: 50%;
+  }
+
+  &__variation-label {
+    padding-bottom: 8px;
+    @extend %t-variation-label;
+  }
+}

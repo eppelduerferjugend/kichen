@@ -1,0 +1,29 @@
+
+$amount-height: 48px;
+
+.amount {
+  display: flex;
+  flex-direction: row;
+  background: $c-control;
+  border-radius: 4px;
+
+  &__value {
+    flex-grow: 1;
+    text-align: center;
+    @extend %t-control-value;
+    line-height: $amount-height;
+  }
+
+  &__btn-remove,
+  &__btn-add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $amount-height;
+  }
+
+  &--selected {
+    background: $c-control-active;
+    color: $c-white;
+  }
+}

@@ -1,0 +1,10 @@
+---
+
+project_name: kichen.spaghettisfest.lu
+project_domains: ["{{ project_name }}"]
+project_proxy_csp: "default-src https: data: wss: 'unsafe-inline' 'unsafe-eval'"
+project_port_names: ['web', 'database']
+
+deploy_environment: production
+deploy_branch: master
+deploy_repository: ssh://git@github.com/eppelduerferjugend/kichen.git

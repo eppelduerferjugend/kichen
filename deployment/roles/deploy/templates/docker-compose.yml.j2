@@ -1,0 +1,29 @@
+---
+version: "3.1"
+
+services:
+
+  web:
+    build: "."
+    image: kichen-web:latest
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "127.0.0.1:{{ project_ports['web'] }}:80"
+
+  database:
+    image: mariadb:latest
+    restart: always
+    volumes:
+      - database:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=kichen
+      - MYSQL_USER=kichen
+      - MYSQL_PASSWORD=kichen
+    ports:
+      - "127.0.0.1:{{ project_ports['database'] }}:3306"
+
+volumes:
+  database:
+    driver: local
