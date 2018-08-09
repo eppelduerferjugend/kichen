@@ -1,7 +1,8 @@
 <?php
 
 require_once 'lib/functions.php';
-require_once 'lib/model.php';
+require_once 'lib/items.php';
+require_once 'lib/orders.php';
 
 // set error reporting
 error_reporting(E_ALL);
@@ -49,6 +50,14 @@ if ($params = matchUrl($url, '#^get items/([0-9]+)$#'))
   $id = $params[0];
   $item = findItem($id);
   return $item ? respondWithJson($item) : respondWith404();
+}
+
+// GET stats
+if ($url === 'get stats')
+{
+  return respondWithJson([
+    'deliveredItems' => countDeliveredItems(),
+  ]);
 }
 
 // GET orders
