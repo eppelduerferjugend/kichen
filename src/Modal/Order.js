@@ -182,16 +182,17 @@ export default class OrderModal extends Modal {
 
     // show success alert
     let status = ''
-    if (data.order.itemsBefore === 0) {
+    let order = data.order
+    if (order.itemsBefore === 0) {
       status = `Se gëtt direkt als nächst beaarbescht.`
-    } else if (data.order.itemsBefore === 1) {
+    } else if (order.itemsBefore === 1) {
       status = `Virun dëser ass nach eng aaner Portioun drun.`
     } else {
-      status = `Virun dëser sinn nach ${data.order.itemsBefore} aaner ` +
+      status = `Virun dëser sinn nach ${order.itemsBefore} aaner ` +
                `Portioune drun.`
     }
 
-    this.alert('success', `Bestellung ass opginn. ${status}`)
+    this.alert('success', `Bestellung № ${order.number} ass opginn. ${status}`)
   }
 
   orderDidFail () {

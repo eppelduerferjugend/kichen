@@ -78,6 +78,7 @@ export default class AppModal extends Modal {
     let $title = document.createElement('div')
     $title.classList.add('orders__title')
     $title.innerHTML =
+      `<span class="orders__number">№ ${order.number}</span> ` +
       `<span class="orders__table">${order.table}</span> ` +
       `<span class="orders__status">${status}</span>`
 

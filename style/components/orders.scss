@@ -35,10 +35,17 @@
     @extend %t-text;
   }
 
+  &__number {
+
+    &::after {
+      content: ' · ';
+    }
+  }
+
   &__comment {
 
     &::before {
-      content: ' · "';
+      content: ': "';
     }
 
     &::after {
